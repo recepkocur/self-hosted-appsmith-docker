@@ -7,8 +7,8 @@ services:
       - ./stacks:/appsmith-stacks
     restart: unless-stopped
     ports:
-      - "1991:80"
-      - "1992:443"
+      - "1991:1991"
+      - "1992:1992"
     labels:
       - traefik.enable=true
       - traefik.http.routers.appsmith.rule=Host(`build.kocur.app`)
