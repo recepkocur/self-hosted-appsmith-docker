@@ -12,7 +12,7 @@ services:
       - traefik.http.routers.app-build.tls=true
       - traefik.http.routers.app-build.tls.certresolver=letsencrypt
       - traefik.http.routers.app-build.entrypoints=websecure
-      - traefik.http.services.app-build.loadbalancer.server.port=1741
+      - traefik.http.services.app-build.loadbalancer.server.port=1748
     networks:
       - proxy
 
