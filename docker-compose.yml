@@ -6,12 +6,15 @@ services:
     volumes:
       - ./stacks:/appsmith-stacks
     restart: unless-stopped
+    ports:
+      - "1991:80"
+      - "1992:443"
     labels:
       - traefik.enable=true
       - traefik.http.routers.appsmith.rule=Host(`build.kocur.app`)
       - traefik.http.routers.appsmith.tls=true
       - traefik.http.routers.appsmith.tls.certresolver=letsencrypt
-      - traefik.http.services.appsmith.loadbalancer.server.port=9980
+      - traefik.http.services.appsmith.loadbalancer.server.port=1991
     networks:
       - proxy
 
