@@ -1,8 +1,22 @@
 version: "3"
 services:
-  app-build:
-    image: index.docker.io/appsmith/appsmith-ee
-    container_name: app-build
+  appsmith:
+    image: index.docker.io/appsmith/appsmith-ce
+    container_name: appsmith
     volumes:
       - ./stacks:/appsmith-stacks
     restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.appsmith.rule=Host(`build.kocur.app`)
+      - traefik.http.routers.appsmith.tls=true
+      - traefik.http.routers.appsmith.tls.certresolver=letsencrypt
+      - traefik.http.services.appsmith.loadbalancer.server.port=9980
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
+    name: proxy
