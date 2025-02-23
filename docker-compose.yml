@@ -4,8 +4,8 @@ services:
     image: index.docker.io/appsmith/appsmith-ee
     container_name: app-build
     ports:
-      - "1281:1281"
-      - "1282:1282"
+      - "1281:80"
+      - "1282:443"
     volumes:
       - ./stacks:/appsmith-stacks
     restart: unless-stopped
