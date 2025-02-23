@@ -9,6 +9,13 @@ services:
     ports:
       - "1991:1991"
       - "1992:1992"
+    environment:
+      - APPSMITH_ENCRYPTION_PASSWORD=kocur
+      - APPSMITH_ENCRYPTION_SALT=kocur
+      - APPSMITH_ENCRYPTION_SECRET=kocur
+      - APPSMITH_ENCRYPTION_SECRET_KEY=kocur
+      - APPSMITH_ENCRYPTION_SECRET_KEY_SALT=kocur
+      - APPSMITH_CUSTOM_DOMAIN=build.kocur.app
     labels:
       - traefik.enable=true
       - traefik.http.routers.appsmith.rule=Host(`build.kocur.app`)
